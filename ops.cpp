@@ -11,6 +11,7 @@
 // stl
 
 #include <algorithm>
+#include <cfloat>
 #include <random>
 #include <string>
 #include <unordered_map>
