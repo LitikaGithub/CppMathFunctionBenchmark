@@ -303,6 +303,8 @@ int main(int argc, char ** argv)
     int nSamples = (int)10000;
     int nRepeats = 1000;
 
+    // the random number generator range must be no larger than DBL_MAX
+    // so we center that on zero
     const double dMax = DBL_MAX / 2.0;
 
     // intentionally use FLT_MAX instead of DBL_MAX even though we are using doubles so that
@@ -310,11 +312,13 @@ int main(int argc, char ** argv)
     // maximum input value is not clearly defined.
     std::vector<TestDef1> tests1 {
         {"acos",        op_acos,    -1.0,       1.0},
-        {"acosh_1",     op_acosh,    1.0,       1000.0},
+        {"acosh_1",     op_acosh,    1.0,       10.0},
         {"acosh_2",     op_acosh,    1.0,       FLT_MAX},
+        {"acosh_2",     op_acosh,    1.0,       DBL_MAX},
         {"asin",        op_asin,    -1.0,       1.0},
         {"asinh_1",     op_asinh,   -10.0,      10.0},
         {"asinh_2",     op_asinh,   -FLT_MAX,   FLT_MAX},
+        {"asinh_3",     op_asinh,   -dMax,      dMax},
         {"atan",        op_atan,    -1.0,       1.0},
         {"atanh",       op_atanh,   -1.0,       1.0},
         {"cbrt",        op_cbrt,    -FLT_MAX,   FLT_MAX},
@@ -322,8 +326,8 @@ int main(int argc, char ** argv)
         {"cos_1",       op_cos,     -M_PI,      M_PI},
         {"cos_2",       op_cos,     0.0,        M_PI * 2.0},
         {"cos_3",       op_cos,     -FLT_MAX,   FLT_MAX},
-        {"cosh_1",      op_cosh,    -2.0,       2.0},
-        {"cosh_2",      op_cosh,    -200.0,     200.0},
+        {"cosh_1",      op_cosh,    -1.0,       1.0},
+        {"cosh_2",      op_cosh,    -710.0,       710.0},
         {"exp",         op_exp,     -200.0,     200.0},
         {"floor",       op_floor,   -FLT_MAX,   FLT_MAX},
         {"isinf",       op_isinf,   -FLT_MAX,   FLT_MAX},
@@ -348,14 +352,15 @@ int main(int argc, char ** argv)
         {"sin_1",       op_sin,     -M_PI,      M_PI},
         {"sin_2",       op_sin,     0.0,        M_PI * 2.0},
         {"sin_3",       op_sin,     -FLT_MAX,   FLT_MAX},
-        {"sinh_1",      op_sinh,    -2.0,       2.0},
-        {"sinh_2",      op_sinh,    -200.0,     200.0},
-        {"sqrt",      op_sqrt,    0.0,        FLT_MAX},
+        {"sinh_1",      op_sinh,    -1.0,       1.0},
+        {"sinh_2",      op_sinh,    -710.0,     710.0},
+        {"sqrt",      op_sqrt,      0.0,        FLT_MAX},
         {"tan_1",       op_tan,     -M_PI,      M_PI},
         {"tan_2",       op_tan,     0.0,        M_PI * 2.0},
         {"tan_3",       op_tan,     -FLT_MAX,   FLT_MAX},
-        {"tanh_1",      op_tanh,    -2.0,       2.0},
-        {"tanh_2",      op_tanh,    -200.0,     200.0},
+        {"tanh_1",      op_tanh,    -1.0,       1.0},
+        {"tanh_2",      op_tanh,    -19.0,     19.0},
+        {"tanh_3",      op_tanh,    -40.0,     40.0},
     };
     std::vector<TestDef2> tests2 {
         {"pow",         op_pow,     -FLT_MAX,   FLT_MAX,     -1.0,      1.0},
