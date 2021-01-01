@@ -3,6 +3,10 @@
 ## Notes
  * This code has been tested with gcc 9 on Ubuntu 18.04 and 20.04, as well as on Visual Studio 2019 on Windows 10.
  
+ * The results show remarkable differences between the std math libraries that come from Microsoft and Visual Studio, and GCC/Linux. Worth exploring
+ 
+ * While I have not tested the Windows version on multiple hardware generations, the performance difference of the same linux executable on different generations of the I7 processor is quite significant on some functions. Again, worth exploring.
+ 
  * In the code, where the array of tests is initialized, you will notice that there multiple tests for the same function. These are to explore the performance implications of value ranges on those functions. Feel free to add your own tests. All you need to do is add a line with the correct parameters. 
  
  * The ability to resize the number of samples from the command line has been removed. It is too easy to put in values that invalidate the cache. There is no harm, however, in allowing the user the modify the number of repetitions and that might be added in the future.
