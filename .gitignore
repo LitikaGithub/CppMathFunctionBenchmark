@@ -1,0 +1,6 @@
+.vs
+*.user
+*.suo
+
+/vs2019/x64/**
+/build/**
