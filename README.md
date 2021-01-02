@@ -9,18 +9,9 @@
  
  * In the code, where the array of tests is initialized, you will notice that there multiple tests for the same function. These are to explore the performance implications of value ranges on those functions. Feel free to add your own tests. All you need to do is add a line with the correct parameters. 
  
- * The ability to resize the number of samples from the command line has been removed. It is too easy to put in values that invalidate the cache. There is no harm, however, in allowing the user the modify the number of repetitions and that might be added in the future.
+ * There might be more clever ways to time the commands in a way that does not include the overhead of the loops. I am open to suggestions.
 
- * There might be more clever ways to time the commands.
-
- * When the arrays are larger than the L3-cache size,
-   speed is capped.
-
- * The operators are called within a double loop-which has some overhead. 
-   That is not compensated for.
-
- * 
- * See also [https://latkin.org/blog/2014/11/09/a-simple-benchmark-of-various-math-operations/](https://latkin.org/blog/2014/11/09/a-simple-benchmark-of-various-math-operations/)
+ 
 
 ## Results
 
